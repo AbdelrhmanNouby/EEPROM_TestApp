@@ -1,0 +1,1328 @@
+
+EEPROM_I2C.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000006e0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000028  00800060  000006e0  00000774  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000007  00800088  00800088  0000079c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000079c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007cc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000168  00000000  00000000  00000808  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000147d  00000000  00000000  00000970  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000985  00000000  00000000  00001ded  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000bfb  00000000  00000000  00002772  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002ec  00000000  00000000  00003370  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000062d  00000000  00000000  0000365c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000095a  00000000  00000000  00003c89  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000108  00000000  00000000  000045e3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 b5 02 	jmp	0x56a	; 0x56a <__vector_10>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 ee       	ldi	r30, 0xE0	; 224
+  68:	f6 e0       	ldi	r31, 0x06	; 6
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 38       	cpi	r26, 0x88	; 136
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a8 e8       	ldi	r26, 0x88	; 136
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	af 38       	cpi	r26, 0x8F	; 143
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 6e 03 	jmp	0x6dc	; 0x6dc <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+#include "../MCAL/UART/UART.h"
+#include "../MCAL/TIMER0/TIMER0.h"
+#include "../LIB/STRING.h"
+
+int main(void)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	eb 97       	sbiw	r28, 0x3b	; 59
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+	UART_u8Init();
+  a6:	0e 94 ff 02 	call	0x5fe	; 0x5fe <UART_u8Init>
+	EEPROM_Init();
+  aa:	0e 94 05 01 	call	0x20a	; 0x20a <EEPROM_Init>
+	TIMER0_u8Init();
+  ae:	0e 94 2e 02 	call	0x45c	; 0x45c <TIMER0_u8Init>
+	uint8_t WRITE_str[] = {"WRITE"};
+  b2:	86 e0       	ldi	r24, 0x06	; 6
+  b4:	e0 e6       	ldi	r30, 0x60	; 96
+  b6:	f0 e0       	ldi	r31, 0x00	; 0
+  b8:	de 01       	movw	r26, r28
+  ba:	11 96       	adiw	r26, 0x01	; 1
+  bc:	01 90       	ld	r0, Z+
+  be:	0d 92       	st	X+, r0
+  c0:	8a 95       	dec	r24
+  c2:	e1 f7       	brne	.-8      	; 0xbc <main+0x2a>
+	uint8_t READ_str[] = {"READ"};
+  c4:	85 e0       	ldi	r24, 0x05	; 5
+  c6:	e6 e6       	ldi	r30, 0x66	; 102
+  c8:	f0 e0       	ldi	r31, 0x00	; 0
+  ca:	de 01       	movw	r26, r28
+  cc:	17 96       	adiw	r26, 0x07	; 7
+  ce:	01 90       	ld	r0, Z+
+  d0:	0d 92       	st	X+, r0
+  d2:	8a 95       	dec	r24
+  d4:	e1 f7       	brne	.-8      	; 0xce <main+0x3c>
+	uint8_t OK_str[] = {"OK"};
+  d6:	8f e4       	ldi	r24, 0x4F	; 79
+  d8:	9b e4       	ldi	r25, 0x4B	; 75
+  da:	9d 87       	std	Y+13, r25	; 0x0d
+  dc:	8c 87       	std	Y+12, r24	; 0x0c
+  de:	1e 86       	std	Y+14, r1	; 0x0e
+	uint8_t NOTOK_str[] = {"NOTOK"};
+  e0:	86 e0       	ldi	r24, 0x06	; 6
+  e2:	eb e6       	ldi	r30, 0x6B	; 107
+  e4:	f0 e0       	ldi	r31, 0x00	; 0
+  e6:	de 01       	movw	r26, r28
+  e8:	1f 96       	adiw	r26, 0x0f	; 15
+  ea:	01 90       	ld	r0, Z+
+  ec:	0d 92       	st	X+, r0
+  ee:	8a 95       	dec	r24
+  f0:	e1 f7       	brne	.-8      	; 0xea <main+0x58>
+	uint8_t R_str[] = {"WRITE"};
+  f2:	86 e0       	ldi	r24, 0x06	; 6
+  f4:	e0 e6       	ldi	r30, 0x60	; 96
+  f6:	f0 e0       	ldi	r31, 0x00	; 0
+  f8:	de 01       	movw	r26, r28
+  fa:	55 96       	adiw	r26, 0x15	; 21
+  fc:	01 90       	ld	r0, Z+
+  fe:	0d 92       	st	X+, r0
+ 100:	8a 95       	dec	r24
+ 102:	e1 f7       	brne	.-8      	; 0xfc <main+0x6a>
+	uint8_t add_str[10] ;
+	//uint8_t data_str[9] ;
+	uint8_t stored_str[] = {"the data stored is : "};	
+ 104:	86 e1       	ldi	r24, 0x16	; 22
+ 106:	e1 e7       	ldi	r30, 0x71	; 113
+ 108:	f0 e0       	ldi	r31, 0x00	; 0
+ 10a:	de 01       	movw	r26, r28
+ 10c:	95 96       	adiw	r26, 0x25	; 37
+ 10e:	01 90       	ld	r0, Z+
+ 110:	0d 92       	st	X+, r0
+ 112:	8a 95       	dec	r24
+ 114:	e1 f7       	brne	.-8      	; 0x10e <main+0x7c>
+	uint8_t data = 99 ;
+ 116:	83 e6       	ldi	r24, 0x63	; 99
+ 118:	8b af       	std	Y+59, r24	; 0x3b
+	uint16_t Recieved_add = 0x08 ;
+		
+    while (1) 
+    {
+		//UART_u8SendByte((uint8_t)data);	
+		UART_u8ReceiveString(R_str);
+ 11a:	ce 01       	movw	r24, r28
+ 11c:	45 96       	adiw	r24, 0x15	; 21
+ 11e:	0e 94 4b 03 	call	0x696	; 0x696 <UART_u8ReceiveString>
+		if (Compare_Str(R_str,WRITE_str))
+ 122:	be 01       	movw	r22, r28
+ 124:	6f 5f       	subi	r22, 0xFF	; 255
+ 126:	7f 4f       	sbci	r23, 0xFF	; 255
+ 128:	ce 01       	movw	r24, r28
+ 12a:	45 96       	adiw	r24, 0x15	; 21
+ 12c:	0e 94 a6 01 	call	0x34c	; 0x34c <Compare_Str>
+ 130:	88 23       	and	r24, r24
+ 132:	71 f1       	breq	.+92     	; 0x190 <main+0xfe>
+		{
+			UART_u8ReceiveString(add_str);
+ 134:	ce 01       	movw	r24, r28
+ 136:	4b 96       	adiw	r24, 0x1b	; 27
+ 138:	0e 94 4b 03 	call	0x696	; 0x696 <UART_u8ReceiveString>
+			Recieved_add = StringToInt(add_str);
+ 13c:	ce 01       	movw	r24, r28
+ 13e:	4b 96       	adiw	r24, 0x1b	; 27
+ 140:	0e 94 bd 01 	call	0x37a	; 0x37a <StringToInt>
+ 144:	8c 01       	movw	r16, r24
+			UART_u8SendString(OK_str);			
+ 146:	ce 01       	movw	r24, r28
+ 148:	0c 96       	adiw	r24, 0x0c	; 12
+ 14a:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			UART_u8SendByte(NEWLINE);
+ 14e:	8d e0       	ldi	r24, 0x0D	; 13
+ 150:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+			
+			UART_u8ReceiveByte(&data);
+ 154:	ce 01       	movw	r24, r28
+ 156:	cb 96       	adiw	r24, 0x3b	; 59
+ 158:	0e 94 2d 03 	call	0x65a	; 0x65a <UART_u8ReceiveByte>
+			UART_u8SendByte(NEWLINE);
+ 15c:	8d e0       	ldi	r24, 0x0D	; 13
+ 15e:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+			if ( EEPROM_u8WriteByte(EEPROM_ADDRESS,Recieved_add,data) != STD_TYPES_OK )
+ 162:	4b ad       	ldd	r20, Y+59	; 0x3b
+ 164:	b8 01       	movw	r22, r16
+ 166:	80 e0       	ldi	r24, 0x00	; 0
+ 168:	0e 94 08 01 	call	0x210	; 0x210 <EEPROM_u8WriteByte>
+ 16c:	88 23       	and	r24, r24
+ 16e:	21 f0       	breq	.+8      	; 0x178 <main+0xe6>
+					 UART_u8SendString(NOTOK_str);
+ 170:	ce 01       	movw	r24, r28
+ 172:	0f 96       	adiw	r24, 0x0f	; 15
+ 174:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			TIMER0_u8PollingDelay_ms(1000);			
+ 178:	88 ee       	ldi	r24, 0xE8	; 232
+ 17a:	93 e0       	ldi	r25, 0x03	; 3
+ 17c:	0e 94 8f 02 	call	0x51e	; 0x51e <TIMER0_u8PollingDelay_ms>
+			UART_u8SendString(OK_str);				
+ 180:	ce 01       	movw	r24, r28
+ 182:	0c 96       	adiw	r24, 0x0c	; 12
+ 184:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			UART_u8SendByte(NEWLINE);
+ 188:	8d e0       	ldi	r24, 0x0D	; 13
+ 18a:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+ 18e:	c5 cf       	rjmp	.-118    	; 0x11a <main+0x88>
+		}
+		else if (Compare_Str(R_str,READ_str))
+ 190:	be 01       	movw	r22, r28
+ 192:	69 5f       	subi	r22, 0xF9	; 249
+ 194:	7f 4f       	sbci	r23, 0xFF	; 255
+ 196:	ce 01       	movw	r24, r28
+ 198:	45 96       	adiw	r24, 0x15	; 21
+ 19a:	0e 94 a6 01 	call	0x34c	; 0x34c <Compare_Str>
+ 19e:	88 23       	and	r24, r24
+ 1a0:	61 f1       	breq	.+88     	; 0x1fa <main+0x168>
+		{
+			UART_u8ReceiveString(add_str);
+ 1a2:	ce 01       	movw	r24, r28
+ 1a4:	4b 96       	adiw	r24, 0x1b	; 27
+ 1a6:	0e 94 4b 03 	call	0x696	; 0x696 <UART_u8ReceiveString>
+			Recieved_add = StringToInt(add_str);
+ 1aa:	ce 01       	movw	r24, r28
+ 1ac:	4b 96       	adiw	r24, 0x1b	; 27
+ 1ae:	0e 94 bd 01 	call	0x37a	; 0x37a <StringToInt>
+ 1b2:	8c 01       	movw	r16, r24
+			UART_u8SendString(OK_str);
+ 1b4:	ce 01       	movw	r24, r28
+ 1b6:	0c 96       	adiw	r24, 0x0c	; 12
+ 1b8:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			UART_u8SendByte(NEWLINE);
+ 1bc:	8d e0       	ldi	r24, 0x0D	; 13
+ 1be:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+
+			UART_u8SendString(stored_str);
+ 1c2:	ce 01       	movw	r24, r28
+ 1c4:	85 96       	adiw	r24, 0x25	; 37
+ 1c6:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			if ( EEPROM_u8ReadByte(EEPROM_ADDRESS,Recieved_add,(uint8_t*)&data) != STD_TYPES_OK )
+ 1ca:	ae 01       	movw	r20, r28
+ 1cc:	45 5c       	subi	r20, 0xC5	; 197
+ 1ce:	5f 4f       	sbci	r21, 0xFF	; 255
+ 1d0:	b8 01       	movw	r22, r16
+ 1d2:	80 e0       	ldi	r24, 0x00	; 0
+ 1d4:	0e 94 4d 01 	call	0x29a	; 0x29a <EEPROM_u8ReadByte>
+ 1d8:	88 23       	and	r24, r24
+ 1da:	21 f0       	breq	.+8      	; 0x1e4 <main+0x152>
+					UART_u8SendString(NOTOK_str);
+ 1dc:	ce 01       	movw	r24, r28
+ 1de:	0f 96       	adiw	r24, 0x0f	; 15
+ 1e0:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			TIMER0_u8PollingDelay_ms(1000);
+ 1e4:	88 ee       	ldi	r24, 0xE8	; 232
+ 1e6:	93 e0       	ldi	r25, 0x03	; 3
+ 1e8:	0e 94 8f 02 	call	0x51e	; 0x51e <TIMER0_u8PollingDelay_ms>
+			UART_u8SendByte(data);
+ 1ec:	8b ad       	ldd	r24, Y+59	; 0x3b
+ 1ee:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+			UART_u8SendByte(NEWLINE);
+ 1f2:	8d e0       	ldi	r24, 0x0D	; 13
+ 1f4:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+ 1f8:	90 cf       	rjmp	.-224    	; 0x11a <main+0x88>
+		}
+		else
+		{
+			UART_u8SendString(NOTOK_str);
+ 1fa:	ce 01       	movw	r24, r28
+ 1fc:	0f 96       	adiw	r24, 0x0f	; 15
+ 1fe:	0e 94 38 03 	call	0x670	; 0x670 <UART_u8SendString>
+			UART_u8SendByte(NEWLINE);			
+ 202:	8d e0       	ldi	r24, 0x0D	; 13
+ 204:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+ 208:	88 cf       	rjmp	.-240    	; 0x11a <main+0x88>
+
+0000020a <EEPROM_Init>:
+
+#include "EEPROM.h"
+
+void EEPROM_Init()
+{
+	I2C_Init();
+ 20a:	0e 94 d4 01 	call	0x3a8	; 0x3a8 <I2C_Init>
+ 20e:	08 95       	ret
+
+00000210 <EEPROM_u8WriteByte>:
+}
+
+uint8_t EEPROM_u8WriteByte ( uint8_t Addr , uint16_t location , uint8_t data )
+{
+ 210:	ff 92       	push	r15
+ 212:	0f 93       	push	r16
+ 214:	1f 93       	push	r17
+ 216:	cf 93       	push	r28
+ 218:	df 93       	push	r29
+ 21a:	06 2f       	mov	r16, r22
+ 21c:	f7 2e       	mov	r15, r23
+ 21e:	14 2f       	mov	r17, r20
+	Addr = ( 0b01010000 | ( Addr << 1 )) ;
+ 220:	90 e0       	ldi	r25, 0x00	; 0
+ 222:	88 0f       	add	r24, r24
+ 224:	99 1f       	adc	r25, r25
+ 226:	c8 2f       	mov	r28, r24
+ 228:	c0 65       	ori	r28, 0x50	; 80
+	uint8_t locationHighByte = ( location >> 8 ) ;
+	uint8_t locationLowByte = (uint8_t)location ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	I2C_SendStartCondition();
+ 22a:	0e 94 e9 01 	call	0x3d2	; 0x3d2 <I2C_SendStartCondition>
+	if (!I2C_u8CheckStatus(START_SENT))
+ 22e:	88 e0       	ldi	r24, 0x08	; 8
+ 230:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 234:	88 23       	and	r24, r24
+ 236:	11 f0       	breq	.+4      	; 0x23c <EEPROM_u8WriteByte+0x2c>
+uint8_t EEPROM_u8WriteByte ( uint8_t Addr , uint16_t location , uint8_t data )
+{
+	Addr = ( 0b01010000 | ( Addr << 1 )) ;
+	uint8_t locationHighByte = ( location >> 8 ) ;
+	uint8_t locationLowByte = (uint8_t)location ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 238:	d0 e0       	ldi	r29, 0x00	; 0
+ 23a:	01 c0       	rjmp	.+2      	; 0x23e <EEPROM_u8WriteByte+0x2e>
+	I2C_SendStartCondition();
+	if (!I2C_u8CheckStatus(START_SENT))
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 23c:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendSlaveAddress(Addr,WRITE_OP);
+ 23e:	60 e0       	ldi	r22, 0x00	; 0
+ 240:	8c 2f       	mov	r24, r28
+ 242:	0e 94 07 02 	call	0x40e	; 0x40e <I2C_SendSlaveAddress>
+	if (!I2C_u8CheckStatus(SLA_W_SENT_WITH_ACK))
+ 246:	88 e1       	ldi	r24, 0x18	; 24
+ 248:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 24c:	81 11       	cpse	r24, r1
+ 24e:	01 c0       	rjmp	.+2      	; 0x252 <EEPROM_u8WriteByte+0x42>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 250:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendByte(locationHighByte);
+ 252:	8f 2d       	mov	r24, r15
+ 254:	0e 94 16 02 	call	0x42c	; 0x42c <I2C_SendByte>
+	if (!I2C_u8CheckStatus(DATA_SENT_WITH_ACK))
+ 258:	88 e2       	ldi	r24, 0x28	; 40
+ 25a:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 25e:	81 11       	cpse	r24, r1
+ 260:	01 c0       	rjmp	.+2      	; 0x264 <EEPROM_u8WriteByte+0x54>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 262:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendByte(locationLowByte);
+ 264:	80 2f       	mov	r24, r16
+ 266:	0e 94 16 02 	call	0x42c	; 0x42c <I2C_SendByte>
+	if (!I2C_u8CheckStatus(DATA_SENT_WITH_ACK))
+ 26a:	88 e2       	ldi	r24, 0x28	; 40
+ 26c:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 270:	81 11       	cpse	r24, r1
+ 272:	01 c0       	rjmp	.+2      	; 0x276 <EEPROM_u8WriteByte+0x66>
+			u8ErrorState = EEPROM_WriteByte_Error ;			
+ 274:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendByte(data);
+ 276:	81 2f       	mov	r24, r17
+ 278:	0e 94 16 02 	call	0x42c	; 0x42c <I2C_SendByte>
+	if (!I2C_u8CheckStatus(DATA_SENT_WITH_ACK))
+ 27c:	88 e2       	ldi	r24, 0x28	; 40
+ 27e:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 282:	81 11       	cpse	r24, r1
+ 284:	01 c0       	rjmp	.+2      	; 0x288 <EEPROM_u8WriteByte+0x78>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 286:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendStopCondition();
+ 288:	0e 94 f2 01 	call	0x3e4	; 0x3e4 <I2C_SendStopCondition>
+
+	return u8ErrorState ;
+}
+ 28c:	8d 2f       	mov	r24, r29
+ 28e:	df 91       	pop	r29
+ 290:	cf 91       	pop	r28
+ 292:	1f 91       	pop	r17
+ 294:	0f 91       	pop	r16
+ 296:	ff 90       	pop	r15
+ 298:	08 95       	ret
+
+0000029a <EEPROM_u8ReadByte>:
+
+uint8_t EEPROM_u8ReadByte( uint8_t Addr , uint16_t location , uint8_t *data )
+{
+ 29a:	ef 92       	push	r14
+ 29c:	ff 92       	push	r15
+ 29e:	0f 93       	push	r16
+ 2a0:	1f 93       	push	r17
+ 2a2:	cf 93       	push	r28
+ 2a4:	df 93       	push	r29
+ 2a6:	f6 2e       	mov	r15, r22
+ 2a8:	e7 2e       	mov	r14, r23
+ 2aa:	8a 01       	movw	r16, r20
+	Addr = (( Addr << 1 ) | 0b01010000 ) ;
+ 2ac:	90 e0       	ldi	r25, 0x00	; 0
+ 2ae:	88 0f       	add	r24, r24
+ 2b0:	99 1f       	adc	r25, r25
+ 2b2:	c8 2f       	mov	r28, r24
+ 2b4:	c0 65       	ori	r28, 0x50	; 80
+	uint8_t locationHighByte = ( location >> 8 ) ;
+	uint8_t locationLowByte = (uint8_t)location ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	I2C_SendStartCondition();
+ 2b6:	0e 94 e9 01 	call	0x3d2	; 0x3d2 <I2C_SendStartCondition>
+	if (!I2C_u8CheckStatus(START_SENT))
+ 2ba:	88 e0       	ldi	r24, 0x08	; 8
+ 2bc:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 2c0:	88 23       	and	r24, r24
+ 2c2:	11 f0       	breq	.+4      	; 0x2c8 <EEPROM_u8ReadByte+0x2e>
+uint8_t EEPROM_u8ReadByte( uint8_t Addr , uint16_t location , uint8_t *data )
+{
+	Addr = (( Addr << 1 ) | 0b01010000 ) ;
+	uint8_t locationHighByte = ( location >> 8 ) ;
+	uint8_t locationLowByte = (uint8_t)location ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 2c4:	d0 e0       	ldi	r29, 0x00	; 0
+ 2c6:	01 c0       	rjmp	.+2      	; 0x2ca <EEPROM_u8ReadByte+0x30>
+	I2C_SendStartCondition();
+	if (!I2C_u8CheckStatus(START_SENT))
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 2c8:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendSlaveAddress(Addr,WRITE_OP);
+ 2ca:	60 e0       	ldi	r22, 0x00	; 0
+ 2cc:	8c 2f       	mov	r24, r28
+ 2ce:	0e 94 07 02 	call	0x40e	; 0x40e <I2C_SendSlaveAddress>
+	if (!I2C_u8CheckStatus(SLA_W_SENT_WITH_ACK))
+ 2d2:	88 e1       	ldi	r24, 0x18	; 24
+ 2d4:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 2d8:	81 11       	cpse	r24, r1
+ 2da:	01 c0       	rjmp	.+2      	; 0x2de <EEPROM_u8ReadByte+0x44>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 2dc:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendByte(locationHighByte);
+ 2de:	8e 2d       	mov	r24, r14
+ 2e0:	0e 94 16 02 	call	0x42c	; 0x42c <I2C_SendByte>
+	if (!I2C_u8CheckStatus(DATA_SENT_WITH_ACK))
+ 2e4:	88 e2       	ldi	r24, 0x28	; 40
+ 2e6:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 2ea:	81 11       	cpse	r24, r1
+ 2ec:	01 c0       	rjmp	.+2      	; 0x2f0 <EEPROM_u8ReadByte+0x56>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 2ee:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendByte(locationLowByte);
+ 2f0:	8f 2d       	mov	r24, r15
+ 2f2:	0e 94 16 02 	call	0x42c	; 0x42c <I2C_SendByte>
+	if (!I2C_u8CheckStatus(DATA_SENT_WITH_ACK))
+ 2f6:	88 e2       	ldi	r24, 0x28	; 40
+ 2f8:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 2fc:	81 11       	cpse	r24, r1
+ 2fe:	01 c0       	rjmp	.+2      	; 0x302 <EEPROM_u8ReadByte+0x68>
+			u8ErrorState = EEPROM_WriteByte_Error ;			
+ 300:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendStartCondition();
+ 302:	0e 94 e9 01 	call	0x3d2	; 0x3d2 <I2C_SendStartCondition>
+	if (!I2C_u8CheckStatus(REPEATED_START_SENT))
+ 306:	80 e1       	ldi	r24, 0x10	; 16
+ 308:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 30c:	81 11       	cpse	r24, r1
+ 30e:	01 c0       	rjmp	.+2      	; 0x312 <EEPROM_u8ReadByte+0x78>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 310:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendSlaveAddress(Addr,READ_OP);
+ 312:	61 e0       	ldi	r22, 0x01	; 1
+ 314:	8c 2f       	mov	r24, r28
+ 316:	0e 94 07 02 	call	0x40e	; 0x40e <I2C_SendSlaveAddress>
+	if (!I2C_u8CheckStatus(SLA_R_RECEIVED_WITH_ACK))
+ 31a:	80 e4       	ldi	r24, 0x40	; 64
+ 31c:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 320:	81 11       	cpse	r24, r1
+ 322:	01 c0       	rjmp	.+2      	; 0x326 <EEPROM_u8ReadByte+0x8c>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 324:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_ReceiveDataWithNoAck(data);
+ 326:	c8 01       	movw	r24, r16
+ 328:	0e 94 24 02 	call	0x448	; 0x448 <I2C_ReceiveDataWithNoAck>
+	if (!I2C_u8CheckStatus(DATA_RECEIVED_WITHOUT_ACK))
+ 32c:	88 e5       	ldi	r24, 0x58	; 88
+ 32e:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <I2C_u8CheckStatus>
+ 332:	81 11       	cpse	r24, r1
+ 334:	01 c0       	rjmp	.+2      	; 0x338 <EEPROM_u8ReadByte+0x9e>
+			u8ErrorState = EEPROM_WriteByte_Error ;
+ 336:	d1 eb       	ldi	r29, 0xB1	; 177
+	I2C_SendStopCondition();
+ 338:	0e 94 f2 01 	call	0x3e4	; 0x3e4 <I2C_SendStopCondition>
+	
+	return u8ErrorState ;
+}
+ 33c:	8d 2f       	mov	r24, r29
+ 33e:	df 91       	pop	r29
+ 340:	cf 91       	pop	r28
+ 342:	1f 91       	pop	r17
+ 344:	0f 91       	pop	r16
+ 346:	ff 90       	pop	r15
+ 348:	ef 90       	pop	r14
+ 34a:	08 95       	ret
+
+0000034c <Compare_Str>:
+		integer += ((2^index)*((*arrBits)-48) ) ;
+		arrBits++ ;
+		index++ ;
+	}
+	return state ;
+}
+ 34c:	dc 01       	movw	r26, r24
+ 34e:	fb 01       	movw	r30, r22
+ 350:	06 c0       	rjmp	.+12     	; 0x35e <Compare_Str+0x12>
+ 352:	99 23       	and	r25, r25
+ 354:	41 f0       	breq	.+16     	; 0x366 <Compare_Str+0x1a>
+ 356:	22 23       	and	r18, r18
+ 358:	31 f0       	breq	.+12     	; 0x366 <Compare_Str+0x1a>
+ 35a:	11 96       	adiw	r26, 0x01	; 1
+ 35c:	31 96       	adiw	r30, 0x01	; 1
+ 35e:	9c 91       	ld	r25, X
+ 360:	20 81       	ld	r18, Z
+ 362:	92 17       	cp	r25, r18
+ 364:	b1 f3       	breq	.-20     	; 0x352 <Compare_Str+0x6>
+ 366:	91 11       	cpse	r25, r1
+ 368:	04 c0       	rjmp	.+8      	; 0x372 <Compare_Str+0x26>
+ 36a:	22 23       	and	r18, r18
+ 36c:	21 f0       	breq	.+8      	; 0x376 <Compare_Str+0x2a>
+ 36e:	80 e0       	ldi	r24, 0x00	; 0
+ 370:	08 95       	ret
+ 372:	80 e0       	ldi	r24, 0x00	; 0
+ 374:	08 95       	ret
+ 376:	81 e0       	ldi	r24, 0x01	; 1
+ 378:	08 95       	ret
+
+0000037a <StringToInt>:
+
+uint16_t StringToInt (uint8_t * Str)
+{
+ 37a:	fc 01       	movw	r30, r24
+	uint16_t result = 0 ;
+ 37c:	80 e0       	ldi	r24, 0x00	; 0
+ 37e:	90 e0       	ldi	r25, 0x00	; 0
+	while ( *Str != '\0' )
+ 380:	0f c0       	rjmp	.+30     	; 0x3a0 <StringToInt+0x26>
+	{
+		result = result * 10 + ( *Str - '0' );
+ 382:	ac 01       	movw	r20, r24
+ 384:	44 0f       	add	r20, r20
+ 386:	55 1f       	adc	r21, r21
+ 388:	88 0f       	add	r24, r24
+ 38a:	99 1f       	adc	r25, r25
+ 38c:	88 0f       	add	r24, r24
+ 38e:	99 1f       	adc	r25, r25
+ 390:	88 0f       	add	r24, r24
+ 392:	99 1f       	adc	r25, r25
+ 394:	84 0f       	add	r24, r20
+ 396:	95 1f       	adc	r25, r21
+ 398:	82 0f       	add	r24, r18
+ 39a:	91 1d       	adc	r25, r1
+ 39c:	c0 97       	sbiw	r24, 0x30	; 48
+		Str++ ;
+ 39e:	31 96       	adiw	r30, 0x01	; 1
+}
+
+uint16_t StringToInt (uint8_t * Str)
+{
+	uint16_t result = 0 ;
+	while ( *Str != '\0' )
+ 3a0:	20 81       	ld	r18, Z
+ 3a2:	21 11       	cpse	r18, r1
+ 3a4:	ee cf       	rjmp	.-36     	; 0x382 <StringToInt+0x8>
+	{
+		result = result * 10 + ( *Str - '0' );
+		Str++ ;
+	}
+	return result ;
+ 3a6:	08 95       	ret
+
+000003a8 <I2C_Init>:
+
+#include "I2C.h"
+
+void I2C_Init(void)
+{
+	SET_BIT(TWCR_REG,TWEN_BIT);				  //Enable I2C
+ 3a8:	86 b7       	in	r24, 0x36	; 54
+ 3aa:	84 60       	ori	r24, 0x04	; 4
+ 3ac:	86 bf       	out	0x36, r24	; 54
+	TWBR_REG = TWBR_REG_VALUE;				  //Set TWBR = value selected in config file 
+ 3ae:	80 e2       	ldi	r24, 0x20	; 32
+ 3b0:	80 b9       	out	0x00, r24	; 0
+	
+	//Prepare TWSR for masking TWPS0,TWPS1
+	SET_BIT(TWSR_REG,TWPS0_BIT);
+ 3b2:	81 b1       	in	r24, 0x01	; 1
+ 3b4:	81 60       	ori	r24, 0x01	; 1
+ 3b6:	81 b9       	out	0x01, r24	; 1
+	SET_BIT(TWSR_REG,TWPS1_BIT);
+ 3b8:	81 b1       	in	r24, 0x01	; 1
+ 3ba:	82 60       	ori	r24, 0x02	; 2
+ 3bc:	81 b9       	out	0x01, r24	; 1
+	
+	//Put I2C TWPS Value in TWSR_REG
+	TWSR_REG &= ((TWPS_BITS_VALUE)|(TWSR_REG_MASK)) ;
+ 3be:	81 b1       	in	r24, 0x01	; 1
+ 3c0:	88 7f       	andi	r24, 0xF8	; 248
+ 3c2:	81 b9       	out	0x01, r24	; 1
+	
+	if ( MODE == SLAVE )	
+	{
+		TWAR_REG = ( I2C_ADDRESS << 1);
+	}
+	SET_BIT(TWCR_REG,TWINT_BIT);
+ 3c4:	86 b7       	in	r24, 0x36	; 54
+ 3c6:	80 68       	ori	r24, 0x80	; 128
+ 3c8:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWEN_BIT);
+ 3ca:	86 b7       	in	r24, 0x36	; 54
+ 3cc:	84 60       	ori	r24, 0x04	; 4
+ 3ce:	86 bf       	out	0x36, r24	; 54
+ 3d0:	08 95       	ret
+
+000003d2 <I2C_SendStartCondition>:
+}
+
+void I2C_SendStartCondition(void)
+{
+    //Send Start condition + clear TWINT flag to start TWI operation
+	SET_BIT(TWCR_REG,TWSTA_BIT);
+ 3d2:	86 b7       	in	r24, 0x36	; 54
+ 3d4:	80 62       	ori	r24, 0x20	; 32
+ 3d6:	86 bf       	out	0x36, r24	; 54
+	
+	while(GET_BIT(TWCR_REG,TWINT_BIT)==0);           //wait until start is transmitted
+ 3d8:	06 b6       	in	r0, 0x36	; 54
+ 3da:	07 fe       	sbrs	r0, 7
+ 3dc:	fd cf       	rjmp	.-6      	; 0x3d8 <I2C_SendStartCondition+0x6>
+	TWCR_REG = ( 1 << TWEN_BIT ) ;                   //clear start bit and all bits except enable	
+ 3de:	84 e0       	ldi	r24, 0x04	; 4
+ 3e0:	86 bf       	out	0x36, r24	; 54
+ 3e2:	08 95       	ret
+
+000003e4 <I2C_SendStopCondition>:
+}
+
+void I2C_SendStopCondition(void)
+{
+	//Send Stop condition + clear TWINT flag to start TWI operation
+	SET_BIT(TWCR_REG,TWINT_BIT);
+ 3e4:	86 b7       	in	r24, 0x36	; 54
+ 3e6:	80 68       	ori	r24, 0x80	; 128
+ 3e8:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWSTO_BIT);
+ 3ea:	86 b7       	in	r24, 0x36	; 54
+ 3ec:	80 61       	ori	r24, 0x10	; 16
+ 3ee:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWEN_BIT);
+ 3f0:	86 b7       	in	r24, 0x36	; 54
+ 3f2:	84 60       	ori	r24, 0x04	; 4
+ 3f4:	86 bf       	out	0x36, r24	; 54
+ 3f6:	08 95       	ret
+
+000003f8 <I2C_u8CheckStatus>:
+}
+
+uint8_t I2C_u8CheckStatus(uint8_t u8ExpectedStatus)
+{
+	uint8_t u8State = STATUS_AS_EXPECTED ;
+	if ((TWSR_REG & TWSR_REG_MASK) == u8ExpectedStatus)
+ 3f8:	21 b1       	in	r18, 0x01	; 1
+ 3fa:	28 7f       	andi	r18, 0xF8	; 248
+ 3fc:	30 e0       	ldi	r19, 0x00	; 0
+ 3fe:	90 e0       	ldi	r25, 0x00	; 0
+ 400:	28 17       	cp	r18, r24
+ 402:	39 07       	cpc	r19, r25
+ 404:	11 f4       	brne	.+4      	; 0x40a <__EEPROM_REGION_LENGTH__+0xa>
+		u8State = STATUS_AS_EXPECTED ;
+ 406:	81 e0       	ldi	r24, 0x01	; 1
+ 408:	08 95       	ret
+	else
+		u8State = STATUS_NOT_AS_EXPECTED ;	
+ 40a:	80 e0       	ldi	r24, 0x00	; 0
+	
+	return u8State ;
+}
+ 40c:	08 95       	ret
+
+0000040e <I2C_SendSlaveAddress>:
+
+void I2C_SendSlaveAddress(uint8_t u8SlaveAdd,uint8_t u8Operation)
+{
+	TWDR_REG = (u8SlaveAdd<<1)|(u8Operation);				//Put address and operation in TWDR Reg
+ 40e:	90 e0       	ldi	r25, 0x00	; 0
+ 410:	88 0f       	add	r24, r24
+ 412:	99 1f       	adc	r25, r25
+ 414:	86 2b       	or	r24, r22
+ 416:	83 b9       	out	0x03, r24	; 3
+	// reset flag Start sending address and operation
+	SET_BIT(TWCR_REG,TWINT_BIT);
+ 418:	86 b7       	in	r24, 0x36	; 54
+ 41a:	80 68       	ori	r24, 0x80	; 128
+ 41c:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWEN_BIT);  
+ 41e:	86 b7       	in	r24, 0x36	; 54
+ 420:	84 60       	ori	r24, 0x04	; 4
+ 422:	86 bf       	out	0x36, r24	; 54
+	while((GET_BIT(TWCR_REG,TWINT_BIT))==0);	        //wait until operation complete	
+ 424:	06 b6       	in	r0, 0x36	; 54
+ 426:	07 fe       	sbrs	r0, 7
+ 428:	fd cf       	rjmp	.-6      	; 0x424 <I2C_SendSlaveAddress+0x16>
+}
+ 42a:	08 95       	ret
+
+0000042c <I2C_SendByte>:
+
+void I2C_SendByte(uint8_t u8Data)
+{
+	TWDR_REG = u8Data;				// assign the character to data REG
+ 42c:	83 b9       	out	0x03, r24	; 3
+	// reset flag Start sending address and operation
+	SET_BIT(TWCR_REG,TWINT_BIT);
+ 42e:	86 b7       	in	r24, 0x36	; 54
+ 430:	80 68       	ori	r24, 0x80	; 128
+ 432:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWEA_BIT);
+ 434:	86 b7       	in	r24, 0x36	; 54
+ 436:	80 64       	ori	r24, 0x40	; 64
+ 438:	86 bf       	out	0x36, r24	; 54
+	SET_BIT(TWCR_REG,TWEN_BIT);
+ 43a:	86 b7       	in	r24, 0x36	; 54
+ 43c:	84 60       	ori	r24, 0x04	; 4
+ 43e:	86 bf       	out	0x36, r24	; 54
+	while((GET_BIT(TWCR_REG,TWINT_BIT))==0);        //wait until operation complete	
+ 440:	06 b6       	in	r0, 0x36	; 54
+ 442:	07 fe       	sbrs	r0, 7
+ 444:	fd cf       	rjmp	.-6      	; 0x440 <I2C_SendByte+0x14>
+}
+ 446:	08 95       	ret
+
+00000448 <I2C_ReceiveDataWithNoAck>:
+
+void I2C_ReceiveDataWithNoAck(uint8_t * u8Data)
+{
+ 448:	fc 01       	movw	r30, r24
+	// reset flag Start sending address and operation
+/*
+	SET_BIT(TWCR_REG,TWINT_BIT);
+	CLR_BIT(TWCR_REG,TWSTO_BIT);*/
+	SET_BIT(TWCR_REG,TWEN_BIT);
+ 44a:	96 b7       	in	r25, 0x36	; 54
+ 44c:	94 60       	ori	r25, 0x04	; 4
+ 44e:	96 bf       	out	0x36, r25	; 54
+	while((GET_BIT(TWCR_REG,TWINT_BIT))==0);        //wait until operation complete
+ 450:	06 b6       	in	r0, 0x36	; 54
+ 452:	07 fe       	sbrs	r0, 7
+ 454:	fd cf       	rjmp	.-6      	; 0x450 <I2C_ReceiveDataWithNoAck+0x8>
+	*u8Data	= TWDR_REG ;
+ 456:	83 b1       	in	r24, 0x03	; 3
+ 458:	80 83       	st	Z, r24
+ 45a:	08 95       	ret
+
+0000045c <TIMER0_u8Init>:
+		{
+			u8ErrorState = TIMER0_ISRDelay_Error;
+		}
+	}
+	return u8ErrorState ;
+}
+ 45c:	83 b7       	in	r24, 0x33	; 51
+ 45e:	8f 7b       	andi	r24, 0xBF	; 191
+ 460:	83 bf       	out	0x33, r24	; 51
+ 462:	83 b7       	in	r24, 0x33	; 51
+ 464:	88 60       	ori	r24, 0x08	; 8
+ 466:	83 bf       	out	0x33, r24	; 51
+ 468:	8f b7       	in	r24, 0x3f	; 63
+ 46a:	80 68       	ori	r24, 0x80	; 128
+ 46c:	8f bf       	out	0x3f, r24	; 63
+ 46e:	89 b7       	in	r24, 0x39	; 57
+ 470:	82 60       	ori	r24, 0x02	; 2
+ 472:	89 bf       	out	0x39, r24	; 57
+ 474:	03 b6       	in	r0, 0x33	; 51
+ 476:	06 fc       	sbrc	r0, 6
+ 478:	0b c0       	rjmp	.+22     	; 0x490 <TIMER0_u8Init+0x34>
+ 47a:	03 b6       	in	r0, 0x33	; 51
+ 47c:	03 fe       	sbrs	r0, 3
+ 47e:	0a c0       	rjmp	.+20     	; 0x494 <TIMER0_u8Init+0x38>
+ 480:	0f b6       	in	r0, 0x3f	; 63
+ 482:	07 fe       	sbrs	r0, 7
+ 484:	09 c0       	rjmp	.+18     	; 0x498 <TIMER0_u8Init+0x3c>
+ 486:	09 b6       	in	r0, 0x39	; 57
+ 488:	01 fc       	sbrc	r0, 1
+ 48a:	08 c0       	rjmp	.+16     	; 0x49c <TIMER0_u8Init+0x40>
+ 48c:	81 e4       	ldi	r24, 0x41	; 65
+ 48e:	08 95       	ret
+ 490:	81 e4       	ldi	r24, 0x41	; 65
+ 492:	08 95       	ret
+ 494:	81 e4       	ldi	r24, 0x41	; 65
+ 496:	08 95       	ret
+ 498:	81 e4       	ldi	r24, 0x41	; 65
+ 49a:	08 95       	ret
+ 49c:	80 e0       	ldi	r24, 0x00	; 0
+ 49e:	08 95       	ret
+
+000004a0 <TIMER0_u8Start>:
+ 4a0:	12 be       	out	0x32, r1	; 50
+ 4a2:	8d e7       	ldi	r24, 0x7D	; 125
+ 4a4:	8c bf       	out	0x3c, r24	; 60
+ 4a6:	83 b7       	in	r24, 0x33	; 51
+ 4a8:	81 60       	ori	r24, 0x01	; 1
+ 4aa:	83 bf       	out	0x33, r24	; 51
+ 4ac:	83 b7       	in	r24, 0x33	; 51
+ 4ae:	82 60       	ori	r24, 0x02	; 2
+ 4b0:	83 bf       	out	0x33, r24	; 51
+ 4b2:	83 b7       	in	r24, 0x33	; 51
+ 4b4:	8b 7f       	andi	r24, 0xFB	; 251
+ 4b6:	83 bf       	out	0x33, r24	; 51
+ 4b8:	03 b6       	in	r0, 0x33	; 51
+ 4ba:	00 fe       	sbrs	r0, 0
+ 4bc:	08 c0       	rjmp	.+16     	; 0x4ce <TIMER0_u8Start+0x2e>
+ 4be:	03 b6       	in	r0, 0x33	; 51
+ 4c0:	01 fe       	sbrs	r0, 1
+ 4c2:	07 c0       	rjmp	.+14     	; 0x4d2 <TIMER0_u8Start+0x32>
+ 4c4:	03 b6       	in	r0, 0x33	; 51
+ 4c6:	02 fe       	sbrs	r0, 2
+ 4c8:	06 c0       	rjmp	.+12     	; 0x4d6 <TIMER0_u8Start+0x36>
+ 4ca:	82 e4       	ldi	r24, 0x42	; 66
+ 4cc:	08 95       	ret
+ 4ce:	82 e4       	ldi	r24, 0x42	; 66
+ 4d0:	08 95       	ret
+ 4d2:	82 e4       	ldi	r24, 0x42	; 66
+ 4d4:	08 95       	ret
+ 4d6:	80 e0       	ldi	r24, 0x00	; 0
+ 4d8:	08 95       	ret
+
+000004da <TIMER0_u8Stop>:
+ 4da:	83 b7       	in	r24, 0x33	; 51
+ 4dc:	8e 7f       	andi	r24, 0xFE	; 254
+ 4de:	83 bf       	out	0x33, r24	; 51
+ 4e0:	83 b7       	in	r24, 0x33	; 51
+ 4e2:	8d 7f       	andi	r24, 0xFD	; 253
+ 4e4:	83 bf       	out	0x33, r24	; 51
+ 4e6:	83 b7       	in	r24, 0x33	; 51
+ 4e8:	8b 7f       	andi	r24, 0xFB	; 251
+ 4ea:	83 bf       	out	0x33, r24	; 51
+ 4ec:	89 b7       	in	r24, 0x39	; 57
+ 4ee:	8d 7f       	andi	r24, 0xFD	; 253
+ 4f0:	89 bf       	out	0x39, r24	; 57
+ 4f2:	03 b6       	in	r0, 0x33	; 51
+ 4f4:	00 fc       	sbrc	r0, 0
+ 4f6:	0b c0       	rjmp	.+22     	; 0x50e <TIMER0_u8Stop+0x34>
+ 4f8:	03 b6       	in	r0, 0x33	; 51
+ 4fa:	01 fc       	sbrc	r0, 1
+ 4fc:	0a c0       	rjmp	.+20     	; 0x512 <TIMER0_u8Stop+0x38>
+ 4fe:	03 b6       	in	r0, 0x33	; 51
+ 500:	02 fc       	sbrc	r0, 2
+ 502:	09 c0       	rjmp	.+18     	; 0x516 <TIMER0_u8Stop+0x3c>
+ 504:	09 b6       	in	r0, 0x39	; 57
+ 506:	01 fe       	sbrs	r0, 1
+ 508:	08 c0       	rjmp	.+16     	; 0x51a <TIMER0_u8Stop+0x40>
+ 50a:	82 e4       	ldi	r24, 0x42	; 66
+ 50c:	08 95       	ret
+ 50e:	82 e4       	ldi	r24, 0x42	; 66
+ 510:	08 95       	ret
+ 512:	82 e4       	ldi	r24, 0x42	; 66
+ 514:	08 95       	ret
+ 516:	82 e4       	ldi	r24, 0x42	; 66
+ 518:	08 95       	ret
+ 51a:	80 e0       	ldi	r24, 0x00	; 0
+ 51c:	08 95       	ret
+
+0000051e <TIMER0_u8PollingDelay_ms>:
+// function to make delay
+uint8_t TIMER0_u8PollingDelay_ms(uint16_t delay)
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// error checking 
+	if( delay_state == DELAY_UNAVAILABLE )
+ 51e:	20 91 8a 00 	lds	r18, 0x008A	; 0x80008a <delay_state>
+ 522:	21 30       	cpi	r18, 0x01	; 1
+ 524:	01 f1       	breq	.+64     	; 0x566 <TIMER0_u8PollingDelay_ms+0x48>
+	{
+		u8ErrorState = Timer0_PollingDelay_Error ;
+	}
+	else
+	{
+		delay_state = DELAY_UNAVAILABLE ;
+ 526:	21 e0       	ldi	r18, 0x01	; 1
+ 528:	20 93 8a 00 	sts	0x008A, r18	; 0x80008a <delay_state>
+		counter = 0;						
+ 52c:	10 92 8c 00 	sts	0x008C, r1	; 0x80008c <counter+0x1>
+ 530:	10 92 8b 00 	sts	0x008B, r1	; 0x80008b <counter>
+		compare = delay;
+ 534:	90 93 8e 00 	sts	0x008E, r25	; 0x80008e <compare+0x1>
+ 538:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <compare>
+		TIMER0_u8Init();
+ 53c:	0e 94 2e 02 	call	0x45c	; 0x45c <TIMER0_u8Init>
+		TIMER0_u8Start();					
+ 540:	0e 94 50 02 	call	0x4a0	; 0x4a0 <TIMER0_u8Start>
+		while (counter <= compare);			
+ 544:	20 91 8b 00 	lds	r18, 0x008B	; 0x80008b <counter>
+ 548:	30 91 8c 00 	lds	r19, 0x008C	; 0x80008c <counter+0x1>
+ 54c:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <compare>
+ 550:	90 91 8e 00 	lds	r25, 0x008E	; 0x80008e <compare+0x1>
+ 554:	82 17       	cp	r24, r18
+ 556:	93 07       	cpc	r25, r19
+ 558:	a8 f7       	brcc	.-22     	; 0x544 <TIMER0_u8PollingDelay_ms+0x26>
+		TIMER0_u8Stop();
+ 55a:	0e 94 6d 02 	call	0x4da	; 0x4da <TIMER0_u8Stop>
+		delay_state = DELAY_AVAILABLE;
+ 55e:	10 92 8a 00 	sts	0x008A, r1	; 0x80008a <delay_state>
+		u8ErrorState = STD_TYPES_OK ;
+ 562:	80 e0       	ldi	r24, 0x00	; 0
+ 564:	08 95       	ret
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// error checking 
+	if( delay_state == DELAY_UNAVAILABLE )
+	{
+		u8ErrorState = Timer0_PollingDelay_Error ;
+ 566:	85 e4       	ldi	r24, 0x45	; 69
+		TIMER0_u8Stop();
+		delay_state = DELAY_AVAILABLE;
+		u8ErrorState = STD_TYPES_OK ;
+	}
+	return u8ErrorState ;
+}
+ 568:	08 95       	ret
+
+0000056a <__vector_10>:
+
+// ISR 
+void __vector_10(void)
+{
+ 56a:	1f 92       	push	r1
+ 56c:	0f 92       	push	r0
+ 56e:	0f b6       	in	r0, 0x3f	; 63
+ 570:	0f 92       	push	r0
+ 572:	11 24       	eor	r1, r1
+ 574:	2f 93       	push	r18
+ 576:	3f 93       	push	r19
+ 578:	4f 93       	push	r20
+ 57a:	5f 93       	push	r21
+ 57c:	6f 93       	push	r22
+ 57e:	7f 93       	push	r23
+ 580:	8f 93       	push	r24
+ 582:	9f 93       	push	r25
+ 584:	af 93       	push	r26
+ 586:	bf 93       	push	r27
+ 588:	ef 93       	push	r30
+ 58a:	ff 93       	push	r31
+	counter++;            // increment counter to compare with delay 
+ 58c:	80 91 8b 00 	lds	r24, 0x008B	; 0x80008b <counter>
+ 590:	90 91 8c 00 	lds	r25, 0x008C	; 0x80008c <counter+0x1>
+ 594:	01 96       	adiw	r24, 0x01	; 1
+ 596:	90 93 8c 00 	sts	0x008C, r25	; 0x80008c <counter+0x1>
+ 59a:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <counter>
+	if(counter == compare && delayCallBack != NULL)				// if delay finished and there function address to call  
+ 59e:	20 91 8b 00 	lds	r18, 0x008B	; 0x80008b <counter>
+ 5a2:	30 91 8c 00 	lds	r19, 0x008C	; 0x80008c <counter+0x1>
+ 5a6:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <compare>
+ 5aa:	90 91 8e 00 	lds	r25, 0x008E	; 0x80008e <compare+0x1>
+ 5ae:	28 17       	cp	r18, r24
+ 5b0:	39 07       	cpc	r19, r25
+ 5b2:	a1 f4       	brne	.+40     	; 0x5dc <__vector_10+0x72>
+ 5b4:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+ 5b8:	90 91 89 00 	lds	r25, 0x0089	; 0x800089 <__data_end+0x1>
+ 5bc:	89 2b       	or	r24, r25
+ 5be:	71 f0       	breq	.+28     	; 0x5dc <__vector_10+0x72>
+	{
+		counter = 0;
+ 5c0:	10 92 8c 00 	sts	0x008C, r1	; 0x80008c <counter+0x1>
+ 5c4:	10 92 8b 00 	sts	0x008B, r1	; 0x80008b <counter>
+		CLR_BIT(TIMSK_REG, OCIE0);							// reset interrupt 
+ 5c8:	89 b7       	in	r24, 0x39	; 57
+ 5ca:	8d 7f       	andi	r24, 0xFD	; 253
+ 5cc:	89 bf       	out	0x39, r24	; 57
+		delay_state = DELAY_AVAILABLE ;
+ 5ce:	10 92 8a 00 	sts	0x008A, r1	; 0x80008a <delay_state>
+		delayCallBack();									// call the function 
+ 5d2:	e0 91 88 00 	lds	r30, 0x0088	; 0x800088 <__data_end>
+ 5d6:	f0 91 89 00 	lds	r31, 0x0089	; 0x800089 <__data_end+0x1>
+ 5da:	09 95       	icall
+	}
+ 5dc:	ff 91       	pop	r31
+ 5de:	ef 91       	pop	r30
+ 5e0:	bf 91       	pop	r27
+ 5e2:	af 91       	pop	r26
+ 5e4:	9f 91       	pop	r25
+ 5e6:	8f 91       	pop	r24
+ 5e8:	7f 91       	pop	r23
+ 5ea:	6f 91       	pop	r22
+ 5ec:	5f 91       	pop	r21
+ 5ee:	4f 91       	pop	r20
+ 5f0:	3f 91       	pop	r19
+ 5f2:	2f 91       	pop	r18
+ 5f4:	0f 90       	pop	r0
+ 5f6:	0f be       	out	0x3f, r0	; 63
+ 5f8:	0f 90       	pop	r0
+ 5fa:	1f 90       	pop	r1
+ 5fc:	18 95       	reti
+
+000005fe <UART_u8Init>:
+ */
+uint8_t UART_u8Init()
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	/*Receive enable config*/
+	SET_BIT(UCSRB_REG,RXEN_BIT);
+ 5fe:	8a b1       	in	r24, 0x0a	; 10
+ 600:	80 61       	ori	r24, 0x10	; 16
+ 602:	8a b9       	out	0x0a, r24	; 10
+	if ( GET_BIT(UCSRB_REG,RXEN_BIT) == 0 )	
+ 604:	54 9b       	sbis	0x0a, 4	; 10
+ 606:	02 c0       	rjmp	.+4      	; 0x60c <UART_u8Init+0xe>
+ * Arguments   : void
+ * return      : UART_Init_Error or STD_TYPES_OK in uint8_t    
+ */
+uint8_t UART_u8Init()
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 608:	80 e0       	ldi	r24, 0x00	; 0
+ 60a:	01 c0       	rjmp	.+2      	; 0x60e <UART_u8Init+0x10>
+	/*Receive enable config*/
+	SET_BIT(UCSRB_REG,RXEN_BIT);
+	if ( GET_BIT(UCSRB_REG,RXEN_BIT) == 0 )	
+		 u8ErrorState = UART_Init_Error ;
+ 60c:	81 e8       	ldi	r24, 0x81	; 129
+		 
+	/*Send enable config*/
+	SET_BIT(UCSRB_REG,TXEN_BIT);
+ 60e:	9a b1       	in	r25, 0x0a	; 10
+ 610:	98 60       	ori	r25, 0x08	; 8
+ 612:	9a b9       	out	0x0a, r25	; 10
+	if ( GET_BIT(UCSRB_REG,TXEN_BIT) == 0 )
+ 614:	53 9b       	sbis	0x0a, 3	; 10
+		u8ErrorState = UART_Init_Error ;
+ 616:	81 e8       	ldi	r24, 0x81	; 129
+		 
+	/*Load configuration values in UCSrC Register*/
+	/*Set URSEL to access UCSRC Reg*/
+	SET_BIT(UCSRC_REG,URSEL_BIT);
+ 618:	90 b5       	in	r25, 0x20	; 32
+ 61a:	90 68       	ori	r25, 0x80	; 128
+ 61c:	90 bd       	out	0x20, r25	; 32
+	if ( GET_BIT(UCSRB_REG,URSEL_BIT) == 0 )
+ 61e:	57 9b       	sbis	0x0a, 7	; 10
+		u8ErrorState = UART_Init_Error ;
+ 620:	81 e8       	ldi	r24, 0x81	; 129
+		
+	/*ASynchronization mode*/				  
+	CLR_BIT(UCSRC_REG,UMSEL_BIT);
+ 622:	90 b5       	in	r25, 0x20	; 32
+ 624:	9f 7b       	andi	r25, 0xBF	; 191
+ 626:	90 bd       	out	0x20, r25	; 32
+	if ( GET_BIT(UCSRB_REG,UMSEL_BIT) != 0 )
+ 628:	56 99       	sbic	0x0a, 6	; 10
+		u8ErrorState = UART_Init_Error ;
+ 62a:	81 e8       	ldi	r24, 0x81	; 129
+		
+	/*Parity Mode config*/
+	UCSRC_REG|=(UART_PARITY<<4);
+ 62c:	90 b5       	in	r25, 0x20	; 32
+ 62e:	90 bd       	out	0x20, r25	; 32
+		 
+	/*Stop Bits config*/
+	ASSIGN_BIT(UCSRC_REG,USBS_BIT,UART_STOP_BIT_NO);
+ 630:	90 b5       	in	r25, 0x20	; 32
+ 632:	97 7f       	andi	r25, 0xF7	; 247
+ 634:	90 bd       	out	0x20, r25	; 32
+		 
+	/*Character size config*/
+	if (UART_SYMPOL_SIZE != UART_9_BITS)
+	{
+		 /*config char size(5,6,7,8)*/
+		 UCSRC_REG |= (UART_SYMPOL_SIZE<<1);
+ 636:	90 b5       	in	r25, 0x20	; 32
+ 638:	96 60       	ori	r25, 0x06	; 6
+ 63a:	90 bd       	out	0x20, r25	; 32
+	}
+	/*end of char size check*/
+			 
+	/*Baud Rate Value Config*/
+	// URSEL BIT must be 0 to can write on UBRR Register
+	CLR_BIT(UCSRC_REG,URSEL_BIT);
+ 63c:	90 b5       	in	r25, 0x20	; 32
+ 63e:	9f 77       	andi	r25, 0x7F	; 127
+ 640:	90 bd       	out	0x20, r25	; 32
+	if ( GET_BIT(UCSRB_REG,URSEL_BIT) != 0 )
+ 642:	57 99       	sbic	0x0a, 7	; 10
+		u8ErrorState = UART_Init_Error ;
+ 644:	81 e8       	ldi	r24, 0x81	; 129
+	// set the  baud rate 	
+	UBRRH_REG = 0 ;
+ 646:	10 bc       	out	0x20, r1	; 32
+	UBRRL_REG = UART_BAUDRATE;
+ 648:	93 e3       	ldi	r25, 0x33	; 51
+ 64a:	99 b9       	out	0x09, r25	; 9
+	
+	return u8ErrorState ;
+}
+ 64c:	08 95       	ret
+
+0000064e <UART_u8SendByte>:
+ */
+uint8_t UART_u8SendByte(uint8_t data)
+{
+	uint8_t u8ErrorState ;
+	/*wait while previous sending is complete*/
+	while ( (GET_BIT(UCSRA_REG,UDRE_BIT)) == 0 );
+ 64e:	5d 9b       	sbis	0x0b, 5	; 11
+ 650:	fe cf       	rjmp	.-4      	; 0x64e <UART_u8SendByte>
+	/*send byte*/
+	UDR_REG = data ;
+ 652:	8c b9       	out	0x0c, r24	; 12
+	if ( UDR_REG != data )
+ 654:	8c b1       	in	r24, 0x0c	; 12
+		u8ErrorState = UART_SendByte_Error ;
+	return u8ErrorState ;
+}
+ 656:	82 e8       	ldi	r24, 0x82	; 130
+ 658:	08 95       	ret
+
+0000065a <UART_u8ReceiveByte>:
+ */
+uint8_t UART_u8ReceiveByte(uint8_t * data)
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// pointer passed to function not equal NULL
+	if ( data == NULL )
+ 65a:	00 97       	sbiw	r24, 0x00	; 0
+ 65c:	39 f0       	breq	.+14     	; 0x66c <UART_u8ReceiveByte+0x12>
+		u8ErrorState = UART_ReceiveByte_Error ;
+	else
+	{
+		/*wait while previous transition is complete*/
+		while ( (GET_BIT(UCSRA_REG,RXC_BIT)) == 0 );
+ 65e:	5f 9b       	sbis	0x0b, 7	; 11
+ 660:	fe cf       	rjmp	.-4      	; 0x65e <UART_u8ReceiveByte+0x4>
+		/*send byte*/
+		*data = UDR_REG  ;
+ 662:	2c b1       	in	r18, 0x0c	; 12
+ 664:	fc 01       	movw	r30, r24
+ 666:	20 83       	st	Z, r18
+ * Arguments   : pointer to Char to save the received char 
+ * return      : UART_ReceiveByte_Error or STD_TYPES_OK in uint8_t    
+ */
+uint8_t UART_u8ReceiveByte(uint8_t * data)
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 668:	80 e0       	ldi	r24, 0x00	; 0
+ 66a:	08 95       	ret
+	// pointer passed to function not equal NULL
+	if ( data == NULL )
+		u8ErrorState = UART_ReceiveByte_Error ;
+ 66c:	83 e8       	ldi	r24, 0x83	; 131
+		while ( (GET_BIT(UCSRA_REG,RXC_BIT)) == 0 );
+		/*send byte*/
+		*data = UDR_REG  ;
+	}
+	return u8ErrorState ;
+}
+ 66e:	08 95       	ret
+
+00000670 <UART_u8SendString>:
+ * Description : Receive character by UART Communication 
+ * Arguments   : pointer to string you want to send it 
+ * return      : UART_SendString_Error or STD_TYPES_OK in uint8_t    
+ */
+uint8_t UART_u8SendString(uint8_t *str)
+{
+ 670:	1f 93       	push	r17
+ 672:	cf 93       	push	r28
+ 674:	df 93       	push	r29
+ 676:	ec 01       	movw	r28, r24
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 678:	10 e0       	ldi	r17, 0x00	; 0
+	// send characters until find the NULL
+	while(*str != '\0')
+ 67a:	05 c0       	rjmp	.+10     	; 0x686 <UART_u8SendString+0x16>
+	{
+		// send character by charcter
+		if ( UART_u8SendByte(*str) != STD_TYPES_OK )
+ 67c:	0e 94 27 03 	call	0x64e	; 0x64e <UART_u8SendByte>
+ 680:	81 11       	cpse	r24, r1
+			u8ErrorState = UART_SendString_Error ;
+ 682:	14 e8       	ldi	r17, 0x84	; 132
+		str++;
+ 684:	21 96       	adiw	r28, 0x01	; 1
+ */
+uint8_t UART_u8SendString(uint8_t *str)
+{
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// send characters until find the NULL
+	while(*str != '\0')
+ 686:	88 81       	ld	r24, Y
+ 688:	81 11       	cpse	r24, r1
+ 68a:	f8 cf       	rjmp	.-16     	; 0x67c <UART_u8SendString+0xc>
+		if ( UART_u8SendByte(*str) != STD_TYPES_OK )
+			u8ErrorState = UART_SendString_Error ;
+		str++;
+	}
+	return u8ErrorState ;
+}
+ 68c:	81 2f       	mov	r24, r17
+ 68e:	df 91       	pop	r29
+ 690:	cf 91       	pop	r28
+ 692:	1f 91       	pop	r17
+ 694:	08 95       	ret
+
+00000696 <UART_u8ReceiveString>:
+ * Description : Receive character by UART Communication 
+ * Arguments   : pointer to string to save string in it  
+ * return      : UART_ReceiveString_Error or STD_TYPES_OK in uint8_t    
+ */
+uint8_t UART_u8ReceiveString(uint8_t *str)
+{
+ 696:	0f 93       	push	r16
+ 698:	1f 93       	push	r17
+ 69a:	cf 93       	push	r28
+ 69c:	df 93       	push	r29
+ 69e:	8c 01       	movw	r16, r24
+	uint8_t index = 0 ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// receive the first byte 
+	if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+ 6a0:	0e 94 2d 03 	call	0x65a	; 0x65a <UART_u8ReceiveByte>
+ 6a4:	81 11       	cpse	r24, r1
+ 6a6:	02 c0       	rjmp	.+4      	; 0x6ac <UART_u8ReceiveString+0x16>
+ * return      : UART_ReceiveString_Error or STD_TYPES_OK in uint8_t    
+ */
+uint8_t UART_u8ReceiveString(uint8_t *str)
+{
+	uint8_t index = 0 ;
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+ 6a8:	d0 e0       	ldi	r29, 0x00	; 0
+ 6aa:	01 c0       	rjmp	.+2      	; 0x6ae <UART_u8ReceiveString+0x18>
+	// receive the first byte 
+	if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+		u8ErrorState = UART_ReceiveString_Error ;
+ 6ac:	d5 e8       	ldi	r29, 0x85	; 133
+	// receive byte by byte until find CR
+	while(str[index] != 0x0D )						// enter terminator for terminal = 0x0D ( Carriage return )
+	{
+		index++;
+		if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+			u8ErrorState = UART_ReceiveString_Error ;
+ 6ae:	c0 e0       	ldi	r28, 0x00	; 0
+ 6b0:	08 c0       	rjmp	.+16     	; 0x6c2 <UART_u8ReceiveString+0x2c>
+	if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+		u8ErrorState = UART_ReceiveString_Error ;
+	// receive byte by byte until find CR
+	while(str[index] != 0x0D )						// enter terminator for terminal = 0x0D ( Carriage return )
+	{
+		index++;
+ 6b2:	cf 5f       	subi	r28, 0xFF	; 255
+		if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+ 6b4:	c8 01       	movw	r24, r16
+ 6b6:	8c 0f       	add	r24, r28
+ 6b8:	91 1d       	adc	r25, r1
+ 6ba:	0e 94 2d 03 	call	0x65a	; 0x65a <UART_u8ReceiveByte>
+ 6be:	81 11       	cpse	r24, r1
+			u8ErrorState = UART_ReceiveString_Error ;
+ 6c0:	d5 e8       	ldi	r29, 0x85	; 133
+	uint8_t u8ErrorState = STD_TYPES_OK ;
+	// receive the first byte 
+	if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+		u8ErrorState = UART_ReceiveString_Error ;
+	// receive byte by byte until find CR
+	while(str[index] != 0x0D )						// enter terminator for terminal = 0x0D ( Carriage return )
+ 6c2:	f8 01       	movw	r30, r16
+ 6c4:	ec 0f       	add	r30, r28
+ 6c6:	f1 1d       	adc	r31, r1
+ 6c8:	80 81       	ld	r24, Z
+ 6ca:	8d 30       	cpi	r24, 0x0D	; 13
+ 6cc:	91 f7       	brne	.-28     	; 0x6b2 <UART_u8ReceiveString+0x1c>
+	{
+		index++;
+		if ( UART_u8ReceiveByte(&str[index]) != STD_TYPES_OK )
+			u8ErrorState = UART_ReceiveString_Error ;
+	}
+	str[index] = '\0';
+ 6ce:	10 82       	st	Z, r1
+	return u8ErrorState ;
+ 6d0:	8d 2f       	mov	r24, r29
+ 6d2:	df 91       	pop	r29
+ 6d4:	cf 91       	pop	r28
+ 6d6:	1f 91       	pop	r17
+ 6d8:	0f 91       	pop	r16
+ 6da:	08 95       	ret
+
+000006dc <_exit>:
+ 6dc:	f8 94       	cli
+
+000006de <__stop_program>:
+ 6de:	ff cf       	rjmp	.-2      	; 0x6de <__stop_program>
